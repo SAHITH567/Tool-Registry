@@ -1,0 +1,5 @@
+This is a sample text that I used to test the summarization pipeline. It contains several sentences so the chunker and summarizer behavior can be observed.
+
+The goal of this text is just to create some content. It is not meaningful in depth but helps to test the edge cases of splitting and merging summaries.
+
+Final paragraph to ensure we have extra content. This helps to show multi-chunk processing.
