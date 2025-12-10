@@ -1,9 +1,7 @@
-# Tool Registry + Graph Engine (Simple) - Humanized BTech Fresher Version
-
+# Tool Registry + Graph Engine 
 This repository is a compact FastAPI project built as a small capstone/demo by a BTech fresher (Sahith).
 It demonstrates a minimal **tool registry** and a **graph workflow engine** (nodes -> edges -> state).
 The code is written with clear comments, simple architecture, and an emphasis on explainability —
-so a recruiter or interviewer can read through quickly and run it locally.
 
 ----
 ## Quick personal note (who made this)
