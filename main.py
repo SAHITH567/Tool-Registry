@@ -6,7 +6,6 @@ FastAPI app exposing:
  - POST /run_graph  (run arbitrary registered graph start node)
  - POST /summarize  (convenience: runs example summarization pipeline)
 
-Comments are written in an accessible, human style (BTech fresher notes).
 """
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
