@@ -8,7 +8,6 @@ FastAPI app exposing:
 
 Comments are written in an accessible, human style (BTech fresher notes).
 """
-# NOTE: demo app for interview / portfolio. Not production hardened — made to explain the idea.
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Any, Dict
@@ -20,7 +19,6 @@ from . import workflows, tools as builtin_tools
 
 app = FastAPI(title='Tool Registry + Graph Engine (Simple)')
 
-# small CORS so recruiter can test from browser easily
 app.add_middleware(
     CORSMiddleware,
     allow_origins=['*'],
@@ -29,7 +27,6 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-# initialize engine and nodes
 engine = GraphEngine()
 engine.set_tool_invoker(invoke_tool)
 
@@ -50,7 +47,6 @@ async def _list_tools():
 
 @app.post('/tools/register')
 async def _register_tool(payload: Dict[str, Any]):
-    # For demo safety, allow registering only existing builtins by specifying builtin name
     builtin = payload.get('builtin')
     name = payload.get('name')
     if not builtin or not name:
@@ -76,7 +72,6 @@ async def _run_graph(payload: Dict[str, Any]):
 
 @app.post('/summarize')
 async def _summarize(payload: Dict[str, Any]):
-    # convenience endpoint: run the standard pipeline with provided text
     init_state = {
         'text': payload.get('text', ''),
         'chunk_size': payload.get('chunk_size', 1000),
@@ -86,7 +81,6 @@ async def _summarize(payload: Dict[str, Any]):
     result = await engine.run('node_split_text', init_state)
     return {'final_summary': result.get('final_summary'), 'full_state': result}
 
-# small human touch: print when running directly
 if __name__ == '__main__':
     print('Starting Tool Registry demo — Sahith (BTech) - press CTRL+C to stop')
     uvicorn.run('app.main:app', host='0.0.0.0', port=8000, reload=True)
